@@ -4,13 +4,19 @@ from src.middle_of_the_linked_list.solution import Solution
 
 class TestMiddleOfTheLinkedList:
 
+	def test_empty_list(self):
+		assert Solution().middleNode(None) is None
+
 	def test_list_len_1(self):
 		h = ListNode(5)
 		
 		assert Solution().middleNode(h) == h
 
-	def test_empty_list(self):
-		assert Solution().middleNode(None) is None
+	def test_list_len_2(self):
+		h = ListNode(5)
+		h.next = ListNode(3)
+
+		assert Solution().middleNode(h) == h.next
 
 	def test_odd_len_list(self):
 		h = ListNode(5)

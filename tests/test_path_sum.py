@@ -1,5 +1,5 @@
 from typing import List
-from core.testing.tree import build_tree
+from core.testing.tree import build_compact_tree, build_tree
 
 from src.path_sum.solution import Solution
 
@@ -12,7 +12,7 @@ class TestPathSum:
 		assert path_sum([5, 4, 8, 11, None, 13, 4, 7, 2, None, None, None, None, None, 1], 22)
 
 	def test_example_2(self):
-		assert not path_sum([1, 2, 3], 5) 
+		assert not path_sum([1, 2, 3], 5)
 
 	def test_example_3(self):
 		assert not path_sum([], 0)

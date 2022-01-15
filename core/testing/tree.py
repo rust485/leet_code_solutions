@@ -36,23 +36,29 @@ def build_compact_tree(l: List[Any]) -> Optional[TreeNode]:
 
 	mp = [TreeNode(l[0])]
 
-	j = 0
-	for v in l[1:]:
+	i,j = 1,0
+	while i < len(l):
 		j += 1
 
-		p = mp[ceil(j / 2) - 1]
+		p = mp[ceil(j/2)-1]
 
-		if v is None or p is None:
+		if p is None:
 			mp += [None]
 			continue
 
-		n = TreeNode(v)
-
-		if j % 2:
-			p.left = n
+		v = l[i]
+		if v is None:
+			mp += [None]
 		else:
-			p.right = n
-		
-		mp += [n]
+			n = TreeNode(v)
+
+			if j % 2:
+				p.left = n
+			else:
+				p.right = n
+			
+			mp += [n]
+			
+		i += 1
 
 	return mp[0]

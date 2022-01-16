@@ -85,3 +85,18 @@ def build_compact_tree(l: List[Any]) -> Optional[TreeNode]:
 		i += 1
 
 	return mp[0]
+
+def trees_are_equivalent(root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+	"""
+	Determine if 2 trees are equivalent - i.e. the same tree structure and the same 
+	node values in both trees
+	"""
+	if not root1 and not root2:
+		return True
+
+	if root1 and not root2 or root2 and not root1 \
+		or root1.val != root2.val:
+		return False
+
+	return trees_are_equivalent(root1.left, root2.left) and \
+		trees_are_equivalent(root1.right, root2.right)

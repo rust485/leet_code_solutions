@@ -17,6 +17,16 @@ class Solution:
         if not root1 and not root2:
             return
 
+        if root1 is None:
+            parent.left = root2.left
+            parent.right = root2.right
+            return
+            
+        if root2 is None:
+            parent.left = root1.left
+            parent.right = root1.right
+            return
+
         l1, r1 = (root1.left, root1.right) if root1 else (None, None)
         l2, r2 = (root2.left, root2.right) if root2 else (None, None)
 

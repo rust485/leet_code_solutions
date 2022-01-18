@@ -16,6 +16,16 @@ class TestBackspaceStringCompare:
 		assert not Solution().backspaceCompare(s, t)
 		assert not Solution().backspaceCompare(t, s)
 
+	def test_example_4(self):
+		s,t = 'bxj##tw', 'bxo#j##tw'
+		assert Solution().backspaceCompare(s, t)
+		assert Solution().backspaceCompare(t, s)
+
+	def test_example_5(self):
+		s,t = 'xywrrmp', 'xywrrmu#p'
+		assert Solution().backspaceCompare(s, t)
+		assert Solution().backspaceCompare(t, s)
+
 	def test_empty_strings(self):
 		s,t = '####', ''
 		assert Solution().backspaceCompare(s, t)

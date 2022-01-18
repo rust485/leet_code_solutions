@@ -1,33 +1,31 @@
 class Solution:
 	def backspaceCompare(self, s: str, t: str) -> bool:
 		i,j = len(s)-1, len(t)-1
+		skip_s = skip_t = 0
 
 		while i >= 0 or j >= 0:
-			if i < 0 or j < 0:
-				if i < 0:
-					if t[j] == '#': j = self._backspace(j, t)
-					else: return False
-				else:
-					if s[i] == '#': i = self._backspace(i, s)
-					else: return False
+			i = self._backspace(i, s)
+			j = self._backspace(j, t)
 
-			elif s[i] == '#' or t[j] == '#':
-				if s[i] == '#': i = self._backspace(i, s)
-				if t[j] == '#': j = self._backspace(j, t)
+			if i < 0 and j < 0:
+				break
 
-			elif s[i] != t[j]:
+			elif i < 0 or j < 0 or s[i] != t[j]:
 				return False
-			
-			else:
-				i -= 1
-				j -= 1
+				
+			i -= 1
+			j -= 1
 		
 		return True
 
 	def _backspace(self, idx: int, s: str) -> int:
-		count = 0
-		while idx > 0 and s[idx] == '#':
-			count += 1
+		skip = 0
+		while idx >= 0:
+			if s[idx] == '#': skip += 1
+			elif skip > 0: skip -= 1
+			else: break
+
 			idx -= 1
 
-		return idx - count
+		return idx
+			

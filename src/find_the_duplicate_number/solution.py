@@ -1,9 +1,20 @@
 from typing import List
 
-
 class Solution:
-    def findDuplicate(self, nums: List[int]) -> int:
-        n = len(nums) - 1
-        sum_1_to_n = n * (n + 1) / 2
+	def findDuplicate(self, nums: List[int]) -> int:
+		t = h = nums[0]
 
-        return int(sum(nums) - sum_1_to_n)
+		while True:
+			t = nums[t]
+			h = nums[nums[h]]
+
+			if t == h:
+				break
+
+		t = nums[0]
+
+		while t != h:
+			t = nums[t]
+			h = nums[h]
+
+		return t

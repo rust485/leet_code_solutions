@@ -8,6 +8,9 @@ class TestFindTheDuplicateNumber:
   def test_sample_2(self):
     assert Solution().findDuplicate([3,1,3,4,2]) == 3
 
+  def test_sample_3(self): 
+    assert Solution().findDuplicate([4,3,4,5,2,4,1]) == 4
+
   def test_randomized(self):
     rand = Random()
     length = rand.randint(1, 100)
@@ -16,3 +19,6 @@ class TestFindTheDuplicateNumber:
     arr = [i + 1 for i in range(length)] + [repeated]
 
     assert Solution().findDuplicate(arr) == repeated
+
+  def test_all_same(self):
+    assert Solution().findDuplicate([2, 2, 2, 2, 2]) == 2
